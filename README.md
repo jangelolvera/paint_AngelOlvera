@@ -11,7 +11,7 @@ En este se encuentra la cuadricula en la cual el usuario puede dibujar, además 
 darle click al botón Print. Contiene toda la parte funcional para colorear los pixeles.
 
 ## Prueba de la app
-![demo Paint](demo/prueba_paint.gif)
+![demo Paint](demo/demo_paint.gif)
 
 
 
