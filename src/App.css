@@ -1,7 +1,7 @@
 .header{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
 }
 
 #pallete{
@@ -25,5 +25,20 @@ button{
 #drawingPanel{
   border: 3px solid gray;
   width: fit-content;
+
 }
+
+#drawcont{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+img{
+  width: 200px;
+  height: 200px;
+}
+
+
 
