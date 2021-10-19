@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import './App.css';
 import Pallete from './pallete.js';
 import Canva from './canva'
-import { render } from '@testing-library/react';
 import html2canvas from 'html2canvas';
 
 function App() {
@@ -25,14 +24,15 @@ function App() {
 
   const [selectedColor, setSelectedColor] = useState('white');
   const [draw, setDraw] = useState('empty');
+  const [unclick, setUnclick]=useState(false);
 
 
   function printDraw() {
 
     if (draw==='filled') {
-      
-      setBorders(false);
 
+      setBorders(false);
+      setUnclick(true);
       setTimeout(()=>{html2canvas(captImg.current).then(canvas => {
         pic.current.innerHTML = "";
         pic.current.appendChild(canvas);
@@ -49,6 +49,7 @@ function App() {
     setSgrid(grid);
     setDraw('empty');
     setBorders(true);
+    setUnclick(false);
   }
 
 
@@ -81,7 +82,9 @@ function App() {
       pic={pic}
       captImg={captImg}
       borders={borders}
-      setBorders={setBorders}/>
+      setBorders={setBorders}
+      unclick={unclick}
+      setUnclick={setUnclick}/>
 
     </div>
   );

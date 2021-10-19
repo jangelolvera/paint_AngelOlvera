@@ -2,7 +2,7 @@ import React from 'react';
 import "./App.js"
 
 //Arreglo de colores que el usuario podrá seleccionar
-const colors = ['black', 'white', 'gray', 'red', 'green', 'blue', 'magenta', 'cyan', 'gold', 'lightgreen', 'crimson'];
+const colors = ['white', 'black', 'gray', 'red', 'crimson', 'blue', 'cyan', 'magenta', 'gold', 'lightgreen', 'green'];
 
 function Pallete(props) {
 
@@ -18,13 +18,14 @@ function Pallete(props) {
             {/* función que genera la paleta de colores */}
             {colors.map((color) => {
                 const isSelected = color === props.selectedColor;
-                const borderStyle = isSelected ? '5px solid black' : '1px solid black';
+                const borderStyle = isSelected ? '3px groove #c90bfe' : '1px solid black';
                 return (
 
                     <div className="App" key={color}>
 
                         <div id="pallete" key={color}>
                             <button
+                                className="palletbtns"
                                 type="button"
                                 key={color}
                                 name={color}

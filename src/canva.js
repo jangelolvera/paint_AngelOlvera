@@ -1,7 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 import "./App.js"
 import './App.css'
-import Pallete from './pallete.js';
 
 
 function Canva(props) {
@@ -53,6 +52,7 @@ function Canva(props) {
                                     name={pixel.id}
                                     key={pixel.id}
                                     onMouseOver={paintALot}
+                                    disabled={props.unclick}
                                     style={{
                                         width: pixel.width,
                                         height: pixel.height,
