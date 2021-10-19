@@ -6,24 +6,13 @@ import Pallete from './pallete.js';
 
 function Canva(props) {
 
-    let grid = [];//Pasar al padre
-    const [pressed, setPressed]=useState(false);
-
-    //Genera un arreglo de 100 divs para formar un cuadro de 10x10
-    for (let i = 1; i <= 100; i++) {//Pasar
-
-        grid.push({ id: i, pxcolor: '#FFFF', height: '40px', width: '40px' });
-
-    }
-
-    const [sgrid, setSgrid] = useState(grid);//Padre
-
+    const [pressed, setPressed] = useState(false);
 
     //Pinta cada cuadro cada que se haga click
     function paintIndex(event) {
         props.setDraw('filled');
-        setSgrid(
-            sgrid.map(
+        props.setSgrid(
+            props.sgrid.map(
                 (pixel) => {
                     if (pixel.id === Number(event.target.name))
                         pixel.pxcolor = props.selectedColor;
@@ -34,30 +23,30 @@ function Canva(props) {
         );
     }
 
-    function paintALot(event){
-        if(!pressed) return
-        paintIndex(event); 
+    function paintALot(event) {
+        if (!pressed) return
+        paintIndex(event);
     }
 
-    function startPainting(event){
+    function startPainting(event) {
         setPressed(true);
         paintIndex(event);
     }
 
-    function stopIt(){
+    function stopIt() {
         setPressed(false);
     }
 
     return (
         <div id="drawcont">
-            <div id="drawingPanel">
-                <div id="pixels" 
-                //Se manda a llamar paintIndex al dar click
-                onClick={paintIndex} 
-                onMouseDown={startPainting}
-                onMouseUp={stopIt}
+            <div id="drawingPanel" ref={props.captImg}>
+                <div id="pixels"
+                    //Se manda a llamar paintIndex al dar click
+                    onClick={paintIndex}
+                    onMouseDown={startPainting}
+                    onMouseUp={stopIt}
                 >
-                    {sgrid.map(
+                    {props.sgrid.map(
                         (pixel) => {
                             return (
                                 <button
@@ -67,7 +56,7 @@ function Canva(props) {
                                     style={{
                                         width: pixel.width,
                                         height: pixel.height,
-                                        border: '1px solid gray',
+                                        border: props.borders===true ? '1px solid gray' : '0',
                                         backgroundColor: pixel.pxcolor,
                                         margin: '0px',
                                         padding: '0px'
@@ -78,7 +67,12 @@ function Canva(props) {
                     )}
                 </div>
             </div>
-</div>
+
+            <div id="resultImg">
+                <div ref={props.pic}>
+                </div>
+            </div>
+        </div>
     );
 
 }
